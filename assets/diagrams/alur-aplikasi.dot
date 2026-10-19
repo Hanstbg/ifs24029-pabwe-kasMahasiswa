@@ -1,0 +1,15 @@
+digraph G { rankdir=TB; node [shape=box, style="rounded,filled", fillcolor="#eef2ff", fontname="DejaVu Sans", fontsize=11]; edge [fontname="DejaVu Sans", fontsize=10];
+ start [label="Pengguna membuka aplikasi", shape=oval, fillcolor="#dcfce7"];
+ load [label="Muat data dari localStorage"];
+ form [label="Isi form: judul, nominal, kategori, tanggal"];
+ parse [label="parseAmount()\nubah teks 'Rp 15.000' -> 15000"];
+ valid [label="validateExpense()\nvalid?", shape=diamond, fillcolor="#fef9c3"];
+ err [label="Tampilkan pesan error", fillcolor="#fee2e2"];
+ add [label="addExpense()\nsimpan ke daftar + localStorage"];
+ render [label="render()\nfilter, hitung total, tampilkan daftar"];
+ del [label="Klik Hapus -> deleteExpense()"];
+ start -> load -> form -> parse -> valid;
+ valid -> err [label="tidak"]; err -> form;
+ valid -> add [label="ya"]; add -> render; render -> form [label="input berikutnya"];
+ render -> del [style=dashed]; del -> render [style=dashed];
+}

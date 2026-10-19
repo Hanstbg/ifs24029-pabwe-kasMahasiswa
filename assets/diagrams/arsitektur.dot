@@ -1,0 +1,13 @@
+digraph A { rankdir=LR; node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=11]; edge [fontname="DejaVu Sans", fontsize=10];
+ subgraph cluster_b { label="Browser pengguna"; fontname="DejaVu Sans"; style=rounded; color="#94a3b8";
+  html [label="index.html\n(struktur)", fillcolor="#e0f2fe"];
+  css [label="style.css\n(tampilan)", fillcolor="#e0f2fe"];
+  ui [label="script.js\n(UI & event)", fillcolor="#dbeafe"];
+  logic [label="logic.js\n(fungsi murni)", fillcolor="#dcfce7"];
+  store [label="localStorage\n(penyimpanan)", fillcolor="#fef9c3"];
+ }
+ tests [label="tests/logic.test.js\n(Node.js)", fillcolor="#fce7f3"];
+ e2e [label="tests/e2e.py\n(Playwright)", fillcolor="#fce7f3"];
+ html -> ui; css -> html [dir=none]; ui -> logic [label="memanggil"]; ui -> store [label="simpan/muat"];
+ tests -> logic [label="uji unit", style=dashed]; e2e -> html [label="uji UI", style=dashed];
+}

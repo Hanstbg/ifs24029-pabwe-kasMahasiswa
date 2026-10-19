@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KasMahasiswa - Pencatat Pengeluaran</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>KasMahasiswa</h1><p>Catat pengeluaran harian, pantau uang saku.</p></header>
+  <main>
+    <section class="card" aria-labelledby="t-form">
+      <h2 id="t-form">Tambah Pengeluaran</h2>
+      <form id="form" novalidate>
+        <label>Judul <input id="title" type="text" placeholder="mis. Makan siang"></label>
+        <label>Nominal (Rp) <input id="amount" type="text" inputmode="numeric" placeholder="mis. 15.000"></label>
+        <label>Kategori <select id="category"></select></label>
+        <label>Tanggal <input id="date" type="date"></label>
+        <ul id="errors" class="errors" role="alert"></ul>
+        <button type="submit">Simpan</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="t-sum">
+      <h2 id="t-sum">Ringkasan</h2>
+      <div class="filters">
+        <label>Bulan <input id="f-month" type="month"></label>
+        <label>Kategori <select id="f-category"><option value="">Semua</option></select></label>
+      </div>
+      <p class="total">Total: <strong id="total">Rp0</strong></p>
+      <ul id="by-category" class="bycat"></ul>
+    </section>
+
+    <section class="card wide" aria-labelledby="t-list">
+      <h2 id="t-list">Daftar Pengeluaran</h2>
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty">Belum ada data.</p>
+    </section>
+  </main>
+  <script src="logic.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
